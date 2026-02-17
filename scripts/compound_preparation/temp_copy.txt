@@ -1,0 +1,576 @@
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/PDBQT_OBABEL/
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/SDF_Structures_3D/
+[epapadopoulo@sn127 compound_preparation]$ ./run_smiles_to_pdbqt_single_node.sh --debug ../../Compounds/clinical/clinical.smi
++ [[ ../../Compounds/clinical/clinical.smi == \-\h ]]
++ [[ ../../Compounds/clinical/clinical.smi == \-\-\h\e\l\p ]]
++ [[ ../../Compounds/clinical/clinical.smi == \-\-\m\a\n ]]
++ [[ 1 -lt 1 ]]
++ SMI=../../Compounds/clinical/clinical.smi
++ RDKIT_ENV=/gpfs/home/epapadopoulo/my_rdkit_env
++ OBABEL_ENV=openbabel
++++ dirname ../../Compounds/clinical/clinical.smi
+++ cd ../../Compounds/clinical
+++ pwd
++ SMI_DIR=/gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/clinical
+++ basename ../../Compounds/clinical/clinical.smi
++ SMI_BASENAME=clinical.smi
++ OUT3D=/gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/clinical/SDF_Structures_3D
++ OUTPDBQT=/gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/clinical/PDBQT_OBABEL
++ [[ ! -f ../../Compounds/clinical/clinical.smi ]]
++ mkdir -p /gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/clinical/SDF_Structures_3D /gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/clinical/PDBQT_OBABEL
+++ wc -l
++ SMILES_COUNT=11
++ echo ==========================================
+==========================================
++ echo 'Single-node SMILES to PDBQT conversion'
+Single-node SMILES to PDBQT conversion
+++ date
++ echo 'Job started : Tue Feb  3 21:04:20 EST 2026'
+Job started : Tue Feb  3 21:04:20 EST 2026
++ echo 'Output dir  : /gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/clinical'
+Output dir  : /gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/clinical
++ echo 'Input file  : clinical.smi'
+Input file  : clinical.smi
++ echo 'SMILES lines: 11'
+SMILES lines: 11
++ echo ==========================================
+==========================================
++ [[ 1 -eq 1 ]]
++ echo 'DEBUG: RDKIT_ENV=/gpfs/home/epapadopoulo/my_rdkit_env'
+DEBUG: RDKIT_ENV=/gpfs/home/epapadopoulo/my_rdkit_env
++ echo 'DEBUG: OBABEL_ENV=openbabel'
+DEBUG: OBABEL_ENV=openbabel
++ echo 'DEBUG: conda script exists?'
+DEBUG: conda script exists?
++ [[ -f /gpfs/software/Anaconda3/etc/profile.d/conda.sh ]]
++ echo yes
+yes
+++ command -v conda
++ echo 'DEBUG: conda in PATH: /gpfs/software/Anaconda3/bin/conda'
+DEBUG: conda in PATH: /gpfs/software/Anaconda3/bin/conda
++ command -v conda
++ echo 'DEBUG: conda environments:'
+DEBUG: conda environments:
++ conda info --envs
+# conda environments:
+#
+ADFR                     /gpfs/home/epapadopoulo/.conda/envs/ADFR
+ProDe_v1                 /gpfs/home/epapadopoulo/.conda/envs/ProDe_v1
+biopython_20241211       /gpfs/home/epapadopoulo/.conda/envs/biopython_20241211
+biopython_20241211_2     /gpfs/home/epapadopoulo/.conda/envs/biopython_20241211_2
+fpocket                  /gpfs/home/epapadopoulo/.conda/envs/fpocket
+githubclone              /gpfs/home/epapadopoulo/.conda/envs/githubclone
+githubclone_             /gpfs/home/epapadopoulo/.conda/envs/githubclone_
+githubclone_02           /gpfs/home/epapadopoulo/.conda/envs/githubclone_02
+hollow27                 /gpfs/home/epapadopoulo/.conda/envs/hollow27
+meeko_env                /gpfs/home/epapadopoulo/.conda/envs/meeko_env
+pocket_analysis          /gpfs/home/epapadopoulo/.conda/envs/pocket_analysis
+py27                     /gpfs/home/epapadopoulo/.conda/envs/py27
+                         /gpfs/home/epapadopoulo/my_rdkit_env
+                         /gpfs/scratch/epapadopoulo/miniconda3
+                         /gpfs/scratch/epapadopoulo/miniconda3/envs/py39_env
+                         /gpfs/scratch/epapadopoulo/miniconda3/envs/vina_mpi
+                         /gpfs/scratch/epapadopoulo/miniconda3/envs/whisperenv
+base                     /gpfs/software/Anaconda3
+BERT                     /gpfs/software/Anaconda3/envs/BERT
+BERT-TF                  /gpfs/software/Anaconda3/envs/BERT-TF
+DLC-GPU                  /gpfs/software/Anaconda3/envs/DLC-GPU
+NUMPY                    /gpfs/software/Anaconda3/envs/NUMPY
+PyCharm                  /gpfs/software/Anaconda3/envs/PyCharm
+WxWidgets-env            /gpfs/software/Anaconda3/envs/WxWidgets-env
+abienv                   /gpfs/software/Anaconda3/envs/abienv
+abinit                   /gpfs/software/Anaconda3/envs/abinit
+abinit_test              /gpfs/software/Anaconda3/envs/abinit_test
+afni                     /gpfs/software/Anaconda3/envs/afni
+aiida                    /gpfs/software/Anaconda3/envs/aiida
+alv                      /gpfs/software/Anaconda3/envs/alv
+amber                    /gpfs/software/Anaconda3/envs/amber
+amber16                  /gpfs/software/Anaconda3/envs/amber16
+amber20                  /gpfs/software/Anaconda3/envs/amber20
+atk                      /gpfs/software/Anaconda3/envs/atk
+bdd                      /gpfs/software/Anaconda3/envs/bdd
+biopandas                /gpfs/software/Anaconda3/envs/biopandas
+bioperl-run              /gpfs/software/Anaconda3/envs/bioperl-run
+biopython                /gpfs/software/Anaconda3/envs/biopython
+buddy                    /gpfs/software/Anaconda3/envs/buddy
+cesar2                   /gpfs/software/Anaconda3/envs/cesar2
+cfd                      /gpfs/software/Anaconda3/envs/cfd
+cgal                     /gpfs/software/Anaconda3/envs/cgal
+charuta_tweets           /gpfs/software/Anaconda3/envs/charuta_tweets
+christian                /gpfs/software/Anaconda3/envs/christian
+cnvnator                 /gpfs/software/Anaconda3/envs/cnvnator
+conda-forge              /gpfs/software/Anaconda3/envs/conda-forge
+cse519                   /gpfs/software/Anaconda3/envs/cse519
+diffexp                  /gpfs/software/Anaconda3/envs/diffexp
+dl2                      /gpfs/software/Anaconda3/envs/dl2
+entrez_edirect           /gpfs/software/Anaconda3/envs/entrez_edirect
+etetoolkit               /gpfs/software/Anaconda3/envs/etetoolkit
+fenics                   /gpfs/software/Anaconda3/envs/fenics
+fish                     /gpfs/software/Anaconda3/envs/fish
+fmriprep1.2.5            /gpfs/software/Anaconda3/envs/fmriprep1.2.5
+fmriprep1.5.4            /gpfs/software/Anaconda3/envs/fmriprep1.5.4
+gensim                   /gpfs/software/Anaconda3/envs/gensim
+genx                     /gpfs/software/Anaconda3/envs/genx
+geospatial               /gpfs/software/Anaconda3/envs/geospatial
+gerrychain               /gpfs/software/Anaconda3/envs/gerrychain
+ggseg                    /gpfs/software/Anaconda3/envs/ggseg
+glibc                    /gpfs/software/Anaconda3/envs/glibc
+globus                   /gpfs/software/Anaconda3/envs/globus
+gpaw                     /gpfs/software/Anaconda3/envs/gpaw
+gromacs                  /gpfs/software/Anaconda3/envs/gromacs
+htop                     /gpfs/software/Anaconda3/envs/htop
+hwloc                    /gpfs/software/Anaconda3/envs/hwloc
+hyb                      /gpfs/software/Anaconda3/envs/hyb
+hybpiper                 /gpfs/software/Anaconda3/envs/hybpiper
+i-pi                     /gpfs/software/Anaconda3/envs/i-pi
+ica-aroma                /gpfs/software/Anaconda3/envs/ica-aroma
+icommands                /gpfs/software/Anaconda3/envs/icommands
+install_soft             /gpfs/software/Anaconda3/envs/install_soft
+ipyrad                   /gpfs/software/Anaconda3/envs/ipyrad
+jupyter                  /gpfs/software/Anaconda3/envs/jupyter
+jupytertest              /gpfs/software/Anaconda3/envs/jupytertest
+keffy_phylo              /gpfs/software/Anaconda3/envs/keffy_phylo
+marl                     /gpfs/software/Anaconda3/envs/marl
+mcclintock               /gpfs/software/Anaconda3/envs/mcclintock
+mckinnon                 /gpfs/software/Anaconda3/envs/mckinnon
+metabolishmm             /gpfs/software/Anaconda3/envs/metabolishmm
+metagenomics             /gpfs/software/Anaconda3/envs/metagenomics
+mpi4py                   /gpfs/software/Anaconda3/envs/mpi4py
+mrtrix3                  /gpfs/software/Anaconda3/envs/mrtrix3
+msa                      /gpfs/software/Anaconda3/envs/msa
+msprime                  /gpfs/software/Anaconda3/envs/msprime
+nanopore_processing      /gpfs/software/Anaconda3/envs/nanopore_processing
+openbabel             *  /gpfs/software/Anaconda3/envs/openbabel
+opencv                   /gpfs/software/Anaconda3/envs/opencv
+openjdk                  /gpfs/software/Anaconda3/envs/openjdk
+openmm                   /gpfs/software/Anaconda3/envs/openmm
+osgeo                    /gpfs/software/Anaconda3/envs/osgeo
+ovito-2.9                /gpfs/software/Anaconda3/envs/ovito-2.9
+pandas                   /gpfs/software/Anaconda3/envs/pandas
+parallel-ssh             /gpfs/software/Anaconda3/envs/parallel-ssh
+paraview                 /gpfs/software/Anaconda3/envs/paraview
+parsl_py36               /gpfs/software/Anaconda3/envs/parsl_py36
+phono3py                 /gpfs/software/Anaconda3/envs/phono3py
+popgen                   /gpfs/software/Anaconda3/envs/popgen
+presto                   /gpfs/software/Anaconda3/envs/presto
+pylab                    /gpfs/software/Anaconda3/envs/pylab
+pymol-2.5.2              /gpfs/software/Anaconda3/envs/pymol-2.5.2
+pytabix                  /gpfs/software/Anaconda3/envs/pytabix
+python3.8                /gpfs/software/Anaconda3/envs/python3.8
+python_test              /gpfs/software/Anaconda3/envs/python_test
+pytorch                  /gpfs/software/Anaconda3/envs/pytorch
+pytorch-1.6.0            /gpfs/software/Anaconda3/envs/pytorch-1.6.0
+pytorch2                 /gpfs/software/Anaconda3/envs/pytorch2
+qcfractal                /gpfs/software/Anaconda3/envs/qcfractal
+qgis                     /gpfs/software/Anaconda3/envs/qgis
+qiime2-2017.12           /gpfs/software/Anaconda3/envs/qiime2-2017.12
+qiime2-2019.7            /gpfs/software/Anaconda3/envs/qiime2-2019.7
+qiime2-test              /gpfs/software/Anaconda3/envs/qiime2-test
+qiskit                   /gpfs/software/Anaconda3/envs/qiskit
+qt4                      /gpfs/software/Anaconda3/envs/qt4
+r-jupyter                /gpfs/software/Anaconda3/envs/r-jupyter
+r_v341                   /gpfs/software/Anaconda3/envs/r_v341
+r_v342                   /gpfs/software/Anaconda3/envs/r_v342
+radfar                   /gpfs/software/Anaconda3/envs/radfar
+rebound                  /gpfs/software/Anaconda3/envs/rebound
+relernn                  /gpfs/software/Anaconda3/envs/relernn
+rgeos                    /gpfs/software/Anaconda3/envs/rgeos
+rmsd                     /gpfs/software/Anaconda3/envs/rmsd
+rna_seq                  /gpfs/software/Anaconda3/envs/rna_seq
+rstudio                  /gpfs/software/Anaconda3/envs/rstudio
+rstudio3.5               /gpfs/software/Anaconda3/envs/rstudio3.5
+rstudio_test             /gpfs/software/Anaconda3/envs/rstudio_test
+sage                     /gpfs/software/Anaconda3/envs/sage
+seurat                   /gpfs/software/Anaconda3/envs/seurat
+singularity3             /gpfs/software/Anaconda3/envs/singularity3
+smcpp                    /gpfs/software/Anaconda3/envs/smcpp
+snakemake                /gpfs/software/Anaconda3/envs/snakemake
+snakemake_DGE            /gpfs/software/Anaconda3/envs/snakemake_DGE
+spyder                   /gpfs/software/Anaconda3/envs/spyder
+subread-2.0.1            /gpfs/software/Anaconda3/envs/subread-2.0.1
+svn                      /gpfs/software/Anaconda3/envs/svn
+tedana                   /gpfs/software/Anaconda3/envs/tedana
+tensorflow               /gpfs/software/Anaconda3/envs/tensorflow
+tensorflow1.10           /gpfs/software/Anaconda3/envs/tensorflow1.10
+tensorflow1.13-gpu       /gpfs/software/Anaconda3/envs/tensorflow1.13-gpu
+tensorflow1.3            /gpfs/software/Anaconda3/envs/tensorflow1.3
+tensorflow1.4            /gpfs/software/Anaconda3/envs/tensorflow1.4
+tensorflow2-gpu          /gpfs/software/Anaconda3/envs/tensorflow2-gpu
+test_fix                 /gpfs/software/Anaconda3/envs/test_fix
+test_sshfs               /gpfs/software/Anaconda3/envs/test_sshfs
+tf_bench                 /gpfs/software/Anaconda3/envs/tf_bench
+topicmodels              /gpfs/software/Anaconda3/envs/topicmodels
+torch                    /gpfs/software/Anaconda3/envs/torch
+tweepy                   /gpfs/software/Anaconda3/envs/tweepy
+twitter                  /gpfs/software/Anaconda3/envs/twitter
+velocyto                 /gpfs/software/Anaconda3/envs/velocyto
+wes                      /gpfs/software/Anaconda3/envs/wes
+westest                  /gpfs/software/Anaconda3/envs/westest
+zen4R                    /gpfs/software/Anaconda3/envs/zen4R
+zendnn_tf                /gpfs/software/Anaconda3/envs/zendnn_tf
+zsh                      /gpfs/software/Anaconda3/envs/zsh
+
++ echo 'DEBUG: test RDKit import (conda run)...'
+DEBUG: test RDKit import (conda run)...
++ conda run -n /gpfs/home/epapadopoulo/my_rdkit_env --no-capture-output python -
+usage: conda [-h] [-V] command ...
+conda: error: unrecognized arguments: --no-capture-output
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/PDBQT_OBABEL/
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/SDF_Structures_3D/
+[epapadopoulo@sn127 compound_preparation]$ cat | xclip -selection clipboard
+bash: xclip: command not found...
+
+[epapadopoulo@sn127 compound_preparation]$ cat > temp_copy.txt
+
+
+
+
+cat > temp_copy.txttensorflow1.10           /gpfs/software/Anaconda3/envs/tensorflow1.10
+tensorflow1.13-gpu       /gpfs/software/Anaconda3/envs/tensorflow1.13-gpu
+tensorflow1.3            /gpfs/software/Anaconda3/envs/tensorflow1.3
+tensorflow1.4            /gpfs/software/Anaconda3/envs/tensorflow1.4
+tensorflow2-gpu          /gpfs/software/Anaconda3/envs/tensorflow2-gpu
+test_fix                 /gpfs/software/Anaconda3/envs/test_fix
+test_sshfs               /gpfs/software/Anaconda3/envs/test_sshfs
+tf_bench                 /gpfs/software/Anaconda3/envs/tf_bench
+topicmodels              /gpfs/software/Anaconda3/envs/topicmodels
+torch                    /gpfs/software/Anaconda3/envs/torch
+tweepy                   /gpfs/software/Anaconda3/envs/tweepy
+twitter                  /gpfs/software/Anaconda3/envs/twitter
+velocyto                 /gpfs/software/Anaconda3/envs/velocyto
+wes                      /gpfs/software/Anaconda3/envs/wes
+westest                  /gpfs/software/Anaconda3/envs/westest
+zen4R                    /gpfs/software/Anaconda3/envs/zen4R
+zendnn_tf                /gpfs/software/Anaconda3/envs/zendnn_tf
+zsh                      /gpfs/software/Anaconda3/envs/zsh
+
++ echo 'DEBUG: test RDKit import (conda run)...'
+DEBUG: test RDKit import (conda run)...
++ conda run -n /gpfs/home/epapadopoulo/my_rdkit_env --no-capture-output python -
+usage: conda [-h] [-V] command ...
+conda: error: unrecognized arguments: --no-capture-output
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/PDBQT_OBABEL/
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/SDF_Structures_3D/
+
+
+[epapadopoulo@sn127 compound_preparation]$ ls
+logs_3d  logs_pdbqt  run_smiles_to_pdbqt.sbatch  run_smiles_to_pdbqt_single_node.sh  smiles_line_to_3d.py  temp_copy.txt
+[epapadopoulo@sn127 compound_preparation]$ less temp_copy.txt
+
+
+
+
+cat > temp_copy.txttensorflow1.10           /gpfs/software/Anaconda3/envs/tensorflow1.10
+tensorflow1.13-gpu       /gpfs/software/Anaconda3/envs/tensorflow1.13-gpu
+tensorflow1.3            /gpfs/software/Anaconda3/envs/tensorflow1.3
+tensorflow1.4            /gpfs/software/Anaconda3/envs/tensorflow1.4
+tensorflow2-gpu          /gpfs/software/Anaconda3/envs/tensorflow2-gpu
+test_fix                 /gpfs/software/Anaconda3/envs/test_fix
+test_sshfs               /gpfs/software/Anaconda3/envs/test_sshfs
+tf_bench                 /gpfs/software/Anaconda3/envs/tf_bench
+topicmodels              /gpfs/software/Anaconda3/envs/topicmodels
+torch                    /gpfs/software/Anaconda3/envs/torch
+tweepy                   /gpfs/software/Anaconda3/envs/tweepy
+twitter                  /gpfs/software/Anaconda3/envs/twitter
+velocyto                 /gpfs/software/Anaconda3/envs/velocyto
+wes                      /gpfs/software/Anaconda3/envs/wes
+westest                  /gpfs/software/Anaconda3/envs/westest
+zen4R                    /gpfs/software/Anaconda3/envs/zen4R
+zendnn_tf                /gpfs/software/Anaconda3/envs/zendnn_tf
+zsh                      /gpfs/software/Anaconda3/envs/zsh
+
++ echo 'DEBUG: test RDKit import (conda run)...'
+DEBUG: test RDKit import (conda run)...
++ conda run -n /gpfs/home/epapadopoulo/my_rdkit_env --no-capture-output python -
+usage: conda [-h] [-V] command ...
+conda: error: unrecognized arguments: --no-capture-output
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/PDBQT_OBABEL/
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/SDF_Structures_3D/
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/PDBQT_OBABEL/
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/SDF_Structures_3D/
+[epapadopoulo@sn127 compound_preparation]$ ./run_smiles_to_pdbqt_single_node.sh --debug ../../Compounds/clinical/clinical.smi
++ [[ ../../Compounds/clinical/clinical.smi == \-\h ]]
++ [[ ../../Compounds/clinical/clinical.smi == \-\-\h\e\l\p ]]
++ [[ ../../Compounds/clinical/clinical.smi == \-\-\m\a\n ]]
++ [[ 1 -lt 1 ]]
++ SMI=../../Compounds/clinical/clinical.smi
++ RDKIT_ENV=/gpfs/home/epapadopoulo/my_rdkit_env
++ OBABEL_ENV=openbabel
++++ dirname ../../Compounds/clinical/clinical.smi
+++ cd ../../Compounds/clinical
+++ pwd
++ SMI_DIR=/gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/clinical
+++ basename ../../Compounds/clinical/clinical.smi
++ SMI_BASENAME=clinical.smi
++ OUT3D=/gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/clinical/SDF_Structures_3D
++ OUTPDBQT=/gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/clinical/PDBQT_OBABEL
++ [[ ! -f ../../Compounds/clinical/clinical.smi ]]
++ mkdir -p /gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/clinical/SDF_Structures_3D /gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/clinical/PDBQT_OBABEL
+++ wc -l
++ SMILES_COUNT=11
++ echo ==========================================
+==========================================
++ echo 'Single-node SMILES to PDBQT conversion'
+Single-node SMILES to PDBQT conversion
+++ date
++ echo 'Job started : Tue Feb  3 21:04:20 EST 2026'
+Job started : Tue Feb  3 21:04:20 EST 2026
++ echo 'Output dir  : /gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/clinical'
+Output dir  : /gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/clinical
++ echo 'Input file  : clinical.smi'
+Input file  : clinical.smi
++ echo 'SMILES lines: 11'
+SMILES lines: 11
++ echo ==========================================
+==========================================
++ [[ 1 -eq 1 ]]
++ echo 'DEBUG: RDKIT_ENV=/gpfs/home/epapadopoulo/my_rdkit_env'
+DEBUG: RDKIT_ENV=/gpfs/home/epapadopoulo/my_rdkit_env
++ echo 'DEBUG: OBABEL_ENV=openbabel'
+DEBUG: OBABEL_ENV=openbabel
++ echo 'DEBUG: conda script exists?'
+DEBUG: conda script exists?
++ [[ -f /gpfs/software/Anaconda3/etc/profile.d/conda.sh ]]
++ echo yes
+yes
+++ command -v conda
++ echo 'DEBUG: conda in PATH: /gpfs/software/Anaconda3/bin/conda'
+DEBUG: conda in PATH: /gpfs/software/Anaconda3/bin/conda
++ command -v conda
++ echo 'DEBUG: conda environments:'
+DEBUG: conda environments:
++ conda info --envs
+# conda environments:
+#
+ADFR                     /gpfs/home/epapadopoulo/.conda/envs/ADFR
+ProDe_v1                 /gpfs/home/epapadopoulo/.conda/envs/ProDe_v1
+biopython_20241211       /gpfs/home/epapadopoulo/.conda/envs/biopython_20241211
+biopython_20241211_2     /gpfs/home/epapadopoulo/.conda/envs/biopython_20241211_2
+fpocket                  /gpfs/home/epapadopoulo/.conda/envs/fpocket
+githubclone              /gpfs/home/epapadopoulo/.conda/envs/githubclone
+githubclone_             /gpfs/home/epapadopoulo/.conda/envs/githubclone_
+githubclone_02           /gpfs/home/epapadopoulo/.conda/envs/githubclone_02
+hollow27                 /gpfs/home/epapadopoulo/.conda/envs/hollow27
+meeko_env                /gpfs/home/epapadopoulo/.conda/envs/meeko_env
+pocket_analysis          /gpfs/home/epapadopoulo/.conda/envs/pocket_analysis
+py27                     /gpfs/home/epapadopoulo/.conda/envs/py27
+                         /gpfs/home/epapadopoulo/my_rdkit_env
+                         /gpfs/scratch/epapadopoulo/miniconda3
+                         /gpfs/scratch/epapadopoulo/miniconda3/envs/py39_env
+                         /gpfs/scratch/epapadopoulo/miniconda3/envs/vina_mpi
+                         /gpfs/scratch/epapadopoulo/miniconda3/envs/whisperenv
+base                     /gpfs/software/Anaconda3
+BERT                     /gpfs/software/Anaconda3/envs/BERT
+BERT-TF                  /gpfs/software/Anaconda3/envs/BERT-TF
+DLC-GPU                  /gpfs/software/Anaconda3/envs/DLC-GPU
+NUMPY                    /gpfs/software/Anaconda3/envs/NUMPY
+PyCharm                  /gpfs/software/Anaconda3/envs/PyCharm
+WxWidgets-env            /gpfs/software/Anaconda3/envs/WxWidgets-env
+abienv                   /gpfs/software/Anaconda3/envs/abienv
+abinit                   /gpfs/software/Anaconda3/envs/abinit
+abinit_test              /gpfs/software/Anaconda3/envs/abinit_test
+afni                     /gpfs/software/Anaconda3/envs/afni
+aiida                    /gpfs/software/Anaconda3/envs/aiida
+alv                      /gpfs/software/Anaconda3/envs/alv
+amber                    /gpfs/software/Anaconda3/envs/amber
+amber16                  /gpfs/software/Anaconda3/envs/amber16
+amber20                  /gpfs/software/Anaconda3/envs/amber20
+atk                      /gpfs/software/Anaconda3/envs/atk
+bdd                      /gpfs/software/Anaconda3/envs/bdd
+biopandas                /gpfs/software/Anaconda3/envs/biopandas
+bioperl-run              /gpfs/software/Anaconda3/envs/bioperl-run
+biopython                /gpfs/software/Anaconda3/envs/biopython
+buddy                    /gpfs/software/Anaconda3/envs/buddy
+cesar2                   /gpfs/software/Anaconda3/envs/cesar2
+cfd                      /gpfs/software/Anaconda3/envs/cfd
+cgal                     /gpfs/software/Anaconda3/envs/cgal
+charuta_tweets           /gpfs/software/Anaconda3/envs/charuta_tweets
+christian                /gpfs/software/Anaconda3/envs/christian
+cnvnator                 /gpfs/software/Anaconda3/envs/cnvnator
+conda-forge              /gpfs/software/Anaconda3/envs/conda-forge
+cse519                   /gpfs/software/Anaconda3/envs/cse519
+diffexp                  /gpfs/software/Anaconda3/envs/diffexp
+dl2                      /gpfs/software/Anaconda3/envs/dl2
+entrez_edirect           /gpfs/software/Anaconda3/envs/entrez_edirect
+etetoolkit               /gpfs/software/Anaconda3/envs/etetoolkit
+fenics                   /gpfs/software/Anaconda3/envs/fenics
+fish                     /gpfs/software/Anaconda3/envs/fish
+fmriprep1.2.5            /gpfs/software/Anaconda3/envs/fmriprep1.2.5
+fmriprep1.5.4            /gpfs/software/Anaconda3/envs/fmriprep1.5.4
+gensim                   /gpfs/software/Anaconda3/envs/gensim
+genx                     /gpfs/software/Anaconda3/envs/genx
+geospatial               /gpfs/software/Anaconda3/envs/geospatial
+gerrychain               /gpfs/software/Anaconda3/envs/gerrychain
+ggseg                    /gpfs/software/Anaconda3/envs/ggseg
+glibc                    /gpfs/software/Anaconda3/envs/glibc
+globus                   /gpfs/software/Anaconda3/envs/globus
+gpaw                     /gpfs/software/Anaconda3/envs/gpaw
+gromacs                  /gpfs/software/Anaconda3/envs/gromacs
+htop                     /gpfs/software/Anaconda3/envs/htop
+hwloc                    /gpfs/software/Anaconda3/envs/hwloc
+hyb                      /gpfs/software/Anaconda3/envs/hyb
+hybpiper                 /gpfs/software/Anaconda3/envs/hybpiper
+i-pi                     /gpfs/software/Anaconda3/envs/i-pi
+ica-aroma                /gpfs/software/Anaconda3/envs/ica-aroma
+icommands                /gpfs/software/Anaconda3/envs/icommands
+install_soft             /gpfs/software/Anaconda3/envs/install_soft
+ipyrad                   /gpfs/software/Anaconda3/envs/ipyrad
+jupyter                  /gpfs/software/Anaconda3/envs/jupyter
+jupytertest              /gpfs/software/Anaconda3/envs/jupytertest
+keffy_phylo              /gpfs/software/Anaconda3/envs/keffy_phylo
+marl                     /gpfs/software/Anaconda3/envs/marl
+mcclintock               /gpfs/software/Anaconda3/envs/mcclintock
+mckinnon                 /gpfs/software/Anaconda3/envs/mckinnon
+metabolishmm             /gpfs/software/Anaconda3/envs/metabolishmm
+metagenomics             /gpfs/software/Anaconda3/envs/metagenomics
+mpi4py                   /gpfs/software/Anaconda3/envs/mpi4py
+mrtrix3                  /gpfs/software/Anaconda3/envs/mrtrix3
+msa                      /gpfs/software/Anaconda3/envs/msa
+msprime                  /gpfs/software/Anaconda3/envs/msprime
+nanopore_processing      /gpfs/software/Anaconda3/envs/nanopore_processing
+openbabel             *  /gpfs/software/Anaconda3/envs/openbabel
+opencv                   /gpfs/software/Anaconda3/envs/opencv
+openjdk                  /gpfs/software/Anaconda3/envs/openjdk
+openmm                   /gpfs/software/Anaconda3/envs/openmm
+osgeo                    /gpfs/software/Anaconda3/envs/osgeo
+ovito-2.9                /gpfs/software/Anaconda3/envs/ovito-2.9
+pandas                   /gpfs/software/Anaconda3/envs/pandas
+parallel-ssh             /gpfs/software/Anaconda3/envs/parallel-ssh
+paraview                 /gpfs/software/Anaconda3/envs/paraview
+parsl_py36               /gpfs/software/Anaconda3/envs/parsl_py36
+phono3py                 /gpfs/software/Anaconda3/envs/phono3py
+popgen                   /gpfs/software/Anaconda3/envs/popgen
+presto                   /gpfs/software/Anaconda3/envs/presto
+pylab                    /gpfs/software/Anaconda3/envs/pylab
+pymol-2.5.2              /gpfs/software/Anaconda3/envs/pymol-2.5.2
+pytabix                  /gpfs/software/Anaconda3/envs/pytabix
+python3.8                /gpfs/software/Anaconda3/envs/python3.8
+python_test              /gpfs/software/Anaconda3/envs/python_test
+pytorch                  /gpfs/software/Anaconda3/envs/pytorch
+pytorch-1.6.0            /gpfs/software/Anaconda3/envs/pytorch-1.6.0
+pytorch2                 /gpfs/software/Anaconda3/envs/pytorch2
+qcfractal                /gpfs/software/Anaconda3/envs/qcfractal
+qgis                     /gpfs/software/Anaconda3/envs/qgis
+qiime2-2017.12           /gpfs/software/Anaconda3/envs/qiime2-2017.12
+qiime2-2019.7            /gpfs/software/Anaconda3/envs/qiime2-2019.7
+qiime2-test              /gpfs/software/Anaconda3/envs/qiime2-test
+qiskit                   /gpfs/software/Anaconda3/envs/qiskit
+qt4                      /gpfs/software/Anaconda3/envs/qt4
+r-jupyter                /gpfs/software/Anaconda3/envs/r-jupyter
+r_v341                   /gpfs/software/Anaconda3/envs/r_v341
+r_v342                   /gpfs/software/Anaconda3/envs/r_v342
+radfar                   /gpfs/software/Anaconda3/envs/radfar
+rebound                  /gpfs/software/Anaconda3/envs/rebound
+relernn                  /gpfs/software/Anaconda3/envs/relernn
+rgeos                    /gpfs/software/Anaconda3/envs/rgeos
+rmsd                     /gpfs/software/Anaconda3/envs/rmsd
+rna_seq                  /gpfs/software/Anaconda3/envs/rna_seq
+rstudio                  /gpfs/software/Anaconda3/envs/rstudio
+rstudio3.5               /gpfs/software/Anaconda3/envs/rstudio3.5
+rstudio_test             /gpfs/software/Anaconda3/envs/rstudio_test
+sage                     /gpfs/software/Anaconda3/envs/sage
+seurat                   /gpfs/software/Anaconda3/envs/seurat
+singularity3             /gpfs/software/Anaconda3/envs/singularity3
+smcpp                    /gpfs/software/Anaconda3/envs/smcpp
+snakemake                /gpfs/software/Anaconda3/envs/snakemake
+snakemake_DGE            /gpfs/software/Anaconda3/envs/snakemake_DGE
+spyder                   /gpfs/software/Anaconda3/envs/spyder
+subread-2.0.1            /gpfs/software/Anaconda3/envs/subread-2.0.1
+svn                      /gpfs/software/Anaconda3/envs/svn
+tedana                   /gpfs/software/Anaconda3/envs/tedana
+tensorflow               /gpfs/software/Anaconda3/envs/tensorflow
+tensorflow1.10           /gpfs/software/Anaconda3/envs/tensorflow1.10
+tensorflow1.13-gpu       /gpfs/software/Anaconda3/envs/tensorflow1.13-gpu
+tensorflow1.3            /gpfs/software/Anaconda3/envs/tensorflow1.3
+tensorflow1.4            /gpfs/software/Anaconda3/envs/tensorflow1.4
+tensorflow2-gpu          /gpfs/software/Anaconda3/envs/tensorflow2-gpu
+test_fix                 /gpfs/software/Anaconda3/envs/test_fix
+test_sshfs               /gpfs/software/Anaconda3/envs/test_sshfs
+tf_bench                 /gpfs/software/Anaconda3/envs/tf_bench
+topicmodels              /gpfs/software/Anaconda3/envs/topicmodels
+torch                    /gpfs/software/Anaconda3/envs/torch
+tweepy                   /gpfs/software/Anaconda3/envs/tweepy
+twitter                  /gpfs/software/Anaconda3/envs/twitter
+velocyto                 /gpfs/software/Anaconda3/envs/velocyto
+wes                      /gpfs/software/Anaconda3/envs/wes
+westest                  /gpfs/software/Anaconda3/envs/westest
+zen4R                    /gpfs/software/Anaconda3/envs/zen4R
+zendnn_tf                /gpfs/software/Anaconda3/envs/zendnn_tf
+zsh                      /gpfs/software/Anaconda3/envs/zsh
+
++ echo 'DEBUG: test RDKit import (conda run)...'
+DEBUG: test RDKit import (conda run)...
++ conda run -n /gpfs/home/epapadopoulo/my_rdkit_env --no-capture-output python -
+usage: conda [-h] [-V] command ...
+conda: error: unrecognized arguments: --no-capture-output
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/PDBQT_OBABEL/
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/SDF_Structures_3D/
+[epapadopoulo@sn127 compound_preparation]$ cat | xclip -selection clipboard
+bash: xclip: command not found...
+
+[epapadopoulo@sn127 compound_preparation]$ cat > temp_copy.txt
+
+
+
+
+cat > temp_copy.txttensorflow1.10           /gpfs/software/Anaconda3/envs/tensorflow1.10
+tensorflow1.13-gpu       /gpfs/software/Anaconda3/envs/tensorflow1.13-gpu
+tensorflow1.3            /gpfs/software/Anaconda3/envs/tensorflow1.3
+tensorflow1.4            /gpfs/software/Anaconda3/envs/tensorflow1.4
+tensorflow2-gpu          /gpfs/software/Anaconda3/envs/tensorflow2-gpu
+test_fix                 /gpfs/software/Anaconda3/envs/test_fix
+test_sshfs               /gpfs/software/Anaconda3/envs/test_sshfs
+tf_bench                 /gpfs/software/Anaconda3/envs/tf_bench
+topicmodels              /gpfs/software/Anaconda3/envs/topicmodels
+torch                    /gpfs/software/Anaconda3/envs/torch
+tweepy                   /gpfs/software/Anaconda3/envs/tweepy
+twitter                  /gpfs/software/Anaconda3/envs/twitter
+velocyto                 /gpfs/software/Anaconda3/envs/velocyto
+wes                      /gpfs/software/Anaconda3/envs/wes
+westest                  /gpfs/software/Anaconda3/envs/westest
+zen4R                    /gpfs/software/Anaconda3/envs/zen4R
+zendnn_tf                /gpfs/software/Anaconda3/envs/zendnn_tf
+zsh                      /gpfs/software/Anaconda3/envs/zsh
+
++ echo 'DEBUG: test RDKit import (conda run)...'
+DEBUG: test RDKit import (conda run)...
++ conda run -n /gpfs/home/epapadopoulo/my_rdkit_env --no-capture-output python -
+usage: conda [-h] [-V] command ...
+conda: error: unrecognized arguments: --no-capture-output
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/PDBQT_OBABEL/
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/SDF_Structures_3D/
+
+
+[epapadopoulo@sn127 compound_preparation]$ ls
+logs_3d  logs_pdbqt  run_smiles_to_pdbqt.sbatch  run_smiles_to_pdbqt_single_node.sh  smiles_line_to_3d.py  temp_copy.txt
+[epapadopoulo@sn127 compound_preparation]$ less temp_copy.txt
+
+
+
+
+cat > temp_copy.txttensorflow1.10           /gpfs/software/Anaconda3/envs/tensorflow1.10
+tensorflow1.13-gpu       /gpfs/software/Anaconda3/envs/tensorflow1.13-gpu
+tensorflow1.3            /gpfs/software/Anaconda3/envs/tensorflow1.3
+tensorflow1.4            /gpfs/software/Anaconda3/envs/tensorflow1.4
+tensorflow2-gpu          /gpfs/software/Anaconda3/envs/tensorflow2-gpu
+test_fix                 /gpfs/software/Anaconda3/envs/test_fix
+test_sshfs               /gpfs/software/Anaconda3/envs/test_sshfs
+tf_bench                 /gpfs/software/Anaconda3/envs/tf_bench
+topicmodels              /gpfs/software/Anaconda3/envs/topicmodels
+torch                    /gpfs/software/Anaconda3/envs/torch
+tweepy                   /gpfs/software/Anaconda3/envs/tweepy
+twitter                  /gpfs/software/Anaconda3/envs/twitter
+velocyto                 /gpfs/software/Anaconda3/envs/velocyto
+wes                      /gpfs/software/Anaconda3/envs/wes
+westest                  /gpfs/software/Anaconda3/envs/westest
+zen4R                    /gpfs/software/Anaconda3/envs/zen4R
+zendnn_tf                /gpfs/software/Anaconda3/envs/zendnn_tf
+zsh                      /gpfs/software/Anaconda3/envs/zsh
+
++ echo 'DEBUG: test RDKit import (conda run)...'
+DEBUG: test RDKit import (conda run)...
++ conda run -n /gpfs/home/epapadopoulo/my_rdkit_env --no-capture-output python -
+usage: conda [-h] [-V] command ...
+conda: error: unrecognized arguments: --no-capture-output
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/PDBQT_OBABEL/
+[epapadopoulo@sn127 compound_preparation]$ ls ../../Compounds/clinical/SDF_Structures_3D/

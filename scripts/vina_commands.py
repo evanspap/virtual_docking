@@ -1,0 +1,90 @@
+#!/usr/bin/env python3
+"""
+Generate AutoDock Vina docking commands based on a parameter file.
+
+This script reads a parameter file containing the following entries:
+    indir = <input_directory>
+    outdir = <output_directory>
+    trg = <target_tag>
+    cfg = <config_file>
+
+It scans all *.pdbqt files in indir, checks whether the corresponding
+output file (<outdir>/<basename>_<trg>.pdbqt) already exists, and for each
+missing output, prints the Vina command to stdout redirected to an output log file.
+
+Usage:
+    python vina_commands.py <param_file>
+
+Example:
+    python vina_commands.py /path/to/param_file
+"""
+
+import sys
+import os
+
+def print_usage():
+    print(__doc__)
+    sys.exit(1)
+
+def parse_params(param_path):
+    params = {}
+    with open(param_path) as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            if '=' not in line:
+                continue
+            key, val = map(str.strip, line.split('=', 1))
+            # strip surrounding quotes
+            if val and (val[0] == val[-1]) and val.startswith(("'", '"')):
+                val = val[1:-1]
+            params[key] = val
+    return params
+
+def main():
+    if len(sys.argv) != 2:
+        print_usage()
+
+    param_file = sys.argv[1]
+
+    if not os.path.isfile(param_file):
+        print(f"ERROR: param_file '{param_file}' not found.")
+        sys.exit(1)
+
+    params = parse_params(param_file)
+    try:
+        indir = params['indir']
+        outdir = params['outdir']
+        trg = params['trg']
+        cfg = params['cfg']
+    except KeyError as e:
+        print(f"ERROR: missing parameter '{e.args[0]}' in param_file.")
+        sys.exit(1)
+
+    # Validate paths
+    for name, path in [('input directory', indir),
+                       ('output directory', outdir)]:
+        if not os.path.isdir(path):
+            print(f"ERROR: {name} '{path}' not found.")
+            sys.exit(1)
+    if not os.path.isfile(cfg):
+        print(f"ERROR: config file '{cfg}' not found.")
+        sys.exit(1)
+
+    # Process ligands
+    for ligand in sorted(os.listdir(indir)):
+        if not ligand.endswith('.pdbqt'):
+            continue
+        lig_path = os.path.join(indir, ligand)
+        base = os.path.splitext(ligand)[0]
+        out_path = os.path.join(outdir, f"{base}_{trg}.pdbqt")
+        out_redirect = os.path.join(outdir, f"{base}_{trg}.out")
+        if os.path.exists(out_path):
+            continue
+        cmd = f"vina --config \"{cfg}\" --ligand \"{lig_path}\" --out \"{out_path}\" --cpu 1 --spacing 0.1 > \"{out_redirect}\""
+        print(f"{cmd}")
+
+if __name__ == '__main__':
+    main()
+
