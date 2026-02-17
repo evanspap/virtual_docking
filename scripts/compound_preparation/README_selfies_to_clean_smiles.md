@@ -151,3 +151,5 @@ SELFIES → Radical-free, sanitized SMILES
 without introducing topology distortions.
 
 It is suitable for generative chemistry post-processing pipelines.
+
+License: MIT License
