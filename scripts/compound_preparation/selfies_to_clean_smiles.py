@@ -77,6 +77,7 @@ v1.7.0
 
 * Extended valence normalization to N, O, and S
 
+License: MIT License
 =====================================================================
 """
 
