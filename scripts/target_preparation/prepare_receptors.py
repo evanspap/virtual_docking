@@ -42,6 +42,12 @@ Dry run:
 Custom output directory:
     python prepare_receptors.py ./pdb_directory -o ./pdbqt
 
+Separate Reduce + PDBQT output directories:
+    python prepare_receptors.py ./pdb_directory -o ./pdbqt --reduce-outdir ./reduce_pdb
+
+Default altloc selection for batch runs:
+    python prepare_receptors.py ./pdb_directory --default-altloc A
+
 Manual:
     python prepare_receptors.py --manual
 ===============================================================================
@@ -55,7 +61,7 @@ from pathlib import Path
 from datetime import datetime
 
 
-VERSION = "2.0"
+VERSION = "2.1"
 
 
 # =============================================================================
@@ -83,18 +89,23 @@ def validate_file(path):
 # Main Pipeline
 # =============================================================================
 
-def process_pdb(pdb_path, outdir, dry_run=False):
+def process_pdb(pdb_path, pdbqt_outdir, reduce_outdir=None, dry_run=False, default_altloc=None):
 
     pdb_path = Path(pdb_path)
     base = pdb_path.stem
 
-    reduce_out = pdb_path.parent / f"{base}_reduce.pdb"
-    pdbqt_base = Path(outdir) / base
+    reduce_dir = Path(reduce_outdir) if reduce_outdir else pdb_path.parent
+    reduce_out = reduce_dir / f"{base}_reduce.pdb"
+    pdbqt_outdir = Path(pdbqt_outdir)
+    pdbqt_base = pdbqt_outdir / base
+    pdbqt_file = pdbqt_outdir / f"{base}.pdbqt"
 
     print(f"\n===================================================")
     print(f"Processing: {pdb_path}")
     print(f"Timestamp : {datetime.now()}")
     print(f"===================================================")
+    print(f"Reduce out : {reduce_out}")
+    print(f"PDBQT out  : {pdbqt_file}")
 
     # Step 1 — Reduce
     reduce_cmd = ["reduce", "-BUILD", str(pdb_path)]
@@ -125,13 +136,14 @@ def process_pdb(pdb_path, outdir, dry_run=False):
         "-p"
     ]
 
+    if default_altloc:
+        meeko_cmd.extend(["--default_altloc", str(default_altloc)])
+
     success = run_command(meeko_cmd, dry_run)
 
     if not success:
         print("ERROR: mk_prepare_receptor failed.")
         return False
-
-    pdbqt_file = Path(f"{pdbqt_base}.pdbqt")
 
     if not dry_run and not validate_file(pdbqt_file):
         print("ERROR: PDBQT not created or empty.")
@@ -165,6 +177,15 @@ def main():
     )
 
     parser.add_argument(
+        "--reduce-outdir",
+        default=None,
+        help=(
+            "Output directory for Reduce-generated *_reduce.pdb files "
+            "(default: same folder as each input PDB)"
+        )
+    )
+
+    parser.add_argument(
         "--pattern",
         default="*.pdb",
         help="Glob pattern when input is directory (default: *.pdb)"
@@ -174,6 +195,15 @@ def main():
         "-n", "--dry-run",
         action="store_true",
         help="Print commands without executing."
+    )
+
+    parser.add_argument(
+        "--default-altloc",
+        default=None,
+        help=(
+            "Default alternate location identifier to pass to Meeko "
+            "(e.g., A)."
+        )
     )
 
     parser.add_argument(
@@ -195,6 +225,9 @@ def main():
     input_path = Path(args.input)
     outdir = Path(args.outdir)
     outdir.mkdir(parents=True, exist_ok=True)
+    reduce_outdir = Path(args.reduce_outdir) if args.reduce_outdir else None
+    if reduce_outdir is not None:
+        reduce_outdir.mkdir(parents=True, exist_ok=True)
 
     pdb_files = []
 
@@ -215,7 +248,13 @@ def main():
     failures = 0
 
     for pdb in pdb_files:
-        ok = process_pdb(pdb, outdir, args.dry_run)
+        ok = process_pdb(
+            pdb,
+            outdir,
+            reduce_outdir=reduce_outdir,
+            dry_run=args.dry_run,
+            default_altloc=args.default_altloc,
+        )
         if not ok:
             failures += 1
 
