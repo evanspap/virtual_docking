@@ -1,6 +1,5 @@
 compound=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/compounds/wgan/GA/compounds/PDBQT_OBABEL/
-target=2zht_GA
-cfg=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/conf/wgan/2zht.conf
+target_cfg=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/conf/wgan/2zht.conf
 outdir=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/output/wgan/GA/2zht
 exhaustiveness=32
-num_modes=9
+num_modes=9BQ
