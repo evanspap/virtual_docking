@@ -1,0 +1,6 @@
+indir=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/compounds/nci_sdf/pdbqt_good_new
+outdir=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/output/nup37/p1_300k_nci_r1/
+trg=nup37_p1
+cfg=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/setup/conf/NUP37_P1.conf
+exhaustiveness=8
+num_modes=4

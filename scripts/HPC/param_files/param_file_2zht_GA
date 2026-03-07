@@ -1,0 +1,6 @@
+indir=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/compounds/wgan/GA/compounds/PDBQT_OBABEL/
+outdir=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/output/wgan/GA/2zht
+trg=2zht_GA
+cfg=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/conf/wgan/2zht.conf
+exhaustiveness=32
+num_modes=4

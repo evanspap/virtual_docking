@@ -1,0 +1,4 @@
+indir=/gpfs/scratch/epapadopoulo/MMSEGs_Pockets/Docking/Compounds/NCI_SDF/PDBQT
+outdir=/gpfs/scratch/epapadopoulo/MMSEGs_Pockets/Docking/Output/EP300
+trg=EP300
+cfg=/gpfs/scratch/epapadopoulo/MMSEGs_Pockets/Docking/Setup/conf/EP300.conf

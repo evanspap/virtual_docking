@@ -1,0 +1,4 @@
+indir=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/compounds/nci_sdf/pdbqt_successful
+outdir=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/output/cad/p1_300k_nci_r1/
+trg=cad_p1
+cfg=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/setup/conf/cad_p1.conf

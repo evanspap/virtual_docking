@@ -1,0 +1,6 @@
+indir=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/compounds/nci_sdf/pdbqt_good_new
+outdir=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/output/herpud1/p1_300k_nci_r1/
+trg=herpud1_p1
+cfg=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/conf/herpud1_p1.conf
+exhaustiveness=8
+num_modes=4

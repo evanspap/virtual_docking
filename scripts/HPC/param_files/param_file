@@ -1,0 +1,4 @@
+indir=/gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/Compounds/PDBQT
+outdir=/gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/B1_2ZHR_aln6UJ0_out_7
+trg=BACE1_2ZHR_aln6UJ0
+cfg=/gpfs/projects/DengYasarGroup/GENOVA/Docking_BACE1/conf/B1_2ZHR_aln6UJ0_3.conf

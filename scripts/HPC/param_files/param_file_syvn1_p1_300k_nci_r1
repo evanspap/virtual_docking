@@ -1,0 +1,4 @@
+indir=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/compounds/nci_sdf/pdbqt
+outdir=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/output/syvn1/p1_300k_nci_r1/
+trg=syvn1_p1
+cfg=/gpfs/scratch/epapadopoulo/mmsegs_pockets/docking/setup/conf/syvn1_p1.conf
