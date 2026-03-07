@@ -1,12 +1,48 @@
 ﻿#!/usr/bin/env python3
 """Generate docking .conf files from CSV rows using ligand bounding boxes in PDB files.
 
-Expected workflow:
-1) Read an input CSV/TSV with at least PDB code and ligand 3-letter code columns.
-2) Open each matching PDB from a bioassembly folder.
-3) Select atoms for residues matching the ligand code (resname, case-insensitive).
-4) Compute min/max coordinates, center = (min + max) / 2, size = (max - min) + padding.
-5) Write one {PDB}.conf file per processed row.
+Author: Evangelos Papadopoulos
+Version: 0.3.0
+Date: 2026-03-07
+License: MIT
+
+Short help:
+    Build AutoDock/Vina-style box configs from PDB ligand coordinates.
+
+Long help:
+    This script reads an input CSV/TSV with at least PDB code and ligand
+    3-letter code columns, finds the matching PDB file in a bioassembly
+    folder, extracts ligand atoms, computes a bounding box with padding,
+    and writes one {PDB}.conf file per processed row.
+
+Example usage:
+    python box_Proteins_03.py --csv ./inputs/targets.tsv --pdb-dir ./PDB_bioassembly --out-dir ./conf
+    python box_Proteins_03.py --csv ./inputs/targets.tsv --pdb-dir ./PDB_bioassembly --out-dir ./conf \
+        --pdb-col 3 --ligand-col 4 --pocket-col 6 --padding 8.0 --has-header
+    python box_Proteins_03.py --csv ./inputs/targets.csv --pdb-dir ./PDB_bioassembly --out-dir ./conf \
+        --delimiter tab --receptor-template "./pdbqt/{pdb}_b_filter_reduce.pdbqt"
+
+MIT License
+
+Copyright (c) 2026 Evangelos Papadopoulos
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 """
 
 from __future__ import annotations
@@ -19,6 +55,10 @@ from pathlib import Path
 from typing import Iterable, Optional
 
 from Bio.PDB import PDBParser
+
+__author__ = "Evangelos Papadopoulos"
+__version__ = "0.3.0"
+__date__ = "2026-03-07"
 
 
 def _normalize_pdb_code(raw: str) -> str:
@@ -235,7 +275,14 @@ def run(args: argparse.Namespace) -> int:
 
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Generate docking conf files from ligand bounding boxes in PDB structures."
+        description="Build docking conf files from ligand bounding boxes in PDB structures.",
+        epilog=(
+            "Long help: Reads a CSV/TSV with PDB + ligand codes, locates the PDB file, "
+            "extracts ligand atoms, computes a padded bounding box, and writes one .conf per row. "
+            "Example: python box_Proteins_03.py --csv ./inputs/targets.tsv --pdb-dir ./PDB_bioassembly "
+            "--out-dir ./conf"
+        ),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     p.add_argument("--csv", required=True, help="Input CSV/TSV path")
     p.add_argument("--pdb-dir", required=True, help="Folder containing PDB bioassembly files")
@@ -289,3 +336,6 @@ def build_arg_parser() -> argparse.ArgumentParser:
 if __name__ == "__main__":
     parser = build_arg_parser()
     sys.exit(run(parser.parse_args()))
+
+
+
