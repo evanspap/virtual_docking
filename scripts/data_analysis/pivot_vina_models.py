@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # =============================================================================
@@ -268,12 +268,7 @@ def main() -> int:
         writer.writerows(output_rows)
 
     print(f"[OK] Wrote {len(output_rows)} ligands to: {output_path}")
-    if len(output_header) > 1:
-        preview = ", ".join(output_header[1:1 + min(8, len(output_header) - 1)])
-        print(f"[OK] Example output columns: {preview}")
-    else:
-        print("[OK] No model columns written.")
-
+    print(f"[OK] Models expanded into columns: {', '.join(output_header[1:1 + min(8, len(output_header) - 1)])}" if len(output_header) > 1 else "[OK] No model columns written.")
     return 0
 
 
